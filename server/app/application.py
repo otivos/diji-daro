@@ -6,7 +6,7 @@ def create_app(test_config=None):
     application = Flask(__name__, instance_relative_config=True)
     app=application
     app.config.from_mapping(
-        DATABASE_URL = "PostgreURL"
+        DATABASE_URL = "PostgresURL"
     )
     
     if test_config is None:
