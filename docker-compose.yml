@@ -1,0 +1,32 @@
+# creates a volume to persist data between Postgres container restarts
+
+volumes:
+  daro-vol:
+
+services:
+
+  pgsql:
+    image: postgres:12.11
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: pwd # sets super password for PostgreSQL
+      POSTGRES_USER: user # variable for creating user
+      POSTGRES_DB: daro # database name
+    volumes:
+      - daro-vol:/var/lib/postgresql/data
+    ports:
+      - 5432:3532
+  
+  python:
+    build:
+      context: .
+      dockerfile: ./docker/python.Dockerfile
+    depends_on:
+      - pgsql
+    # uses port 80 for direct access to localhost
+    ports:
+      - 80:5000
+    # the Flask application will go into the 'server' folder of the project and mapped to '/usr/src/app' in the container
+    volumes:
+      - ./app:/user/src/app
+    
