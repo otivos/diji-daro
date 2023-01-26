@@ -1,28 +1,28 @@
 # creates a volume to persist data between Postgres container restarts
 
 volumes:
-  daro-vol:
+  digidaro-vol:
 
 services:
 
-  pgsql:
-    image: postgres:12.11
+  pg_database:
+    image: postgres:15.1
     restart: always
     environment:
-      POSTGRES_PASSWORD: pwd # sets super password for PostgreSQL
-      POSTGRES_USER: user # variable for creating user
-      POSTGRES_DB: daro # database name
+      POSTGRES_PASSWORD: $pwd # sets super password for PostgreSQL
+      POSTGRES_USER: $usr # variable for creating user
+      POSTGRES_DB: $db # database name
     volumes:
-      - daro-vol:/var/lib/postgresql/data
+      - digidaro-vol:/var/lib/postgresql/data
     ports:
-      - 5432:3532
+      - 5432:5432
   
   python:
     build:
       context: .
       dockerfile: ./docker/python.Dockerfile
     depends_on:
-      - pgsql
+      - pg_database
     # uses port 80 for direct access to localhost
     ports:
       - 80:5000
