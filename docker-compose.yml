@@ -9,14 +9,12 @@ services:
     image: postgres:15.1
     restart: always
     environment:
-      POSTGRES_PASSWORD: $pwd # sets super password for PostgreSQL
-      POSTGRES_USER: $usr # variable for creating user
-      POSTGRES_DB: $db # database name
+      POSTGRES_USER: $DB_USER
+      POSTGRES_PASSWORD: $DB_PASSWORD
     volumes:
       - digidaro-vol:/var/lib/postgresql/data
     ports:
-      - 5432:5432
-  
+      - 5432:5432 
   python:
     build:
       context: .

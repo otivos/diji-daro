@@ -3,5 +3,9 @@
 {% block body %}
 
     <h1>Hello from DigiDaro!!</h1>
-    
+    <ul>
+        {% for student in students %}
+            <li>{{ student.username }}</li>
+        {% endfor %}
+    </ul>
 {% endblock %}
