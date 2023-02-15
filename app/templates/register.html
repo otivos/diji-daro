@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <div>
+        {% if error %}
+            {{ error }}
+        {% endif %}
+        <h2>Register</h2>
+        <form action="/student_registration" method="post">
+            <input type="text" name="firstname" id="firstname" placeholder="First Name"><br>
+            <input type="text" name="lastname" id="lastname" placeholder="Last Name"><br>
+            <input type="text" name="username" id="username" placeholder="Username"><br>
+            <select name="gender" id="gender-select">
+                <option disabled selected value="">Select Gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Others</option>
+                <option value="notsay">I'd rather not say</option>
+            </select><br>
+            <input type="text" name="birthdate" id="birthdate" placeholder="Birth Date"><br>
+            <input type="email" name="email" id="email" placeholder="Email"> <br>
+            <input type="text" name="school" id="school" placeholder="School"><br>
+            <input type="password" name="password" id="password" placeholder="Create Password"><br>
+            <input type="password" name="password1" id="password1" placeholder="Confirm Password"><br>
+            <input type="submit" name="" id="">
+        </form>
+    </div>
+{% endblock %}
