@@ -6,7 +6,7 @@
             {{ error }}
         {% endif %}
         <h2>Register</h2>
-        <form action="/student_registration" method="post">
+        <form action="{{ url_for('auth.registerStudent')}}" method="post">
             <input type="text" name="firstname" id="firstname" placeholder="First Name"><br>
             <input type="text" name="lastname" id="lastname" placeholder="Last Name"><br>
             <input type="text" name="username" id="username" placeholder="Username"><br>

@@ -23,3 +23,4 @@ class Student(db.Model):
     #school_id = db.Column(db.ForeignKey("schools.id"))
     #school = db.relationship('School', backref=db.backref('students', lazy=True))
     created_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+

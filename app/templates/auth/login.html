@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block body %}
     <p>Welcome! Sign In to continue.</p>
-        <form action="/student_login" method="post">
+        <form action="{{ url_for('auth.studentLogin') }}" method="post">
             <input type="text" name="username" id="username" placeholder="Enter Username" autofocus>
             <input type="password" name="password" id="password" placeholder="Enter Password">
             <input type="submit" name="" id="">
