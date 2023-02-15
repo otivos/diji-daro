@@ -39,7 +39,7 @@ def init_routes(app):
             if not password:
                 error = "Password field is empty"
 
-            # persist the form data
+            # persist the form data.
             if error is None:
                 try:
                     student = Student(firstname=firstname, lastname=lastname, username=username, gender=gender, birthdate=birthdate, email=email, password=generate_password_hash(password))
@@ -58,11 +58,11 @@ def init_routes(app):
 
         return render_template('register.html')
 
-    # logs in registered students
+    # logs in registered students.
     @app.route('/student_login', methods=['POST', 'GET'])
     def studentLogin():
         
-        # grab form data
+        # grab form data.
         if request.method == 'POST':
             error = None
             username = request.form.get('username').lower()
