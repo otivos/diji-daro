@@ -1,5 +1,3 @@
-# creates a volume to persist data between Postgres container restarts
-
 volumes:
   digidaro-vol:
 
