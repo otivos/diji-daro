@@ -1,3 +1,3 @@
 # digi-daro
 **API Documentation**
-[-] Pending
+- Pending
