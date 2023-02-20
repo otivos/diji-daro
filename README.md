@@ -3,6 +3,6 @@
 - Pending
 ## Table of Contents
 * [Getting started](#gettingstarted)
-- [Pre requistite for installation](#prerequisite)
-- [Installation](#installation)
-- [Test](#tests)
+* [Pre requistite for installation](#prerequisite)
+* [Installation](#installation)
+* [Test](#tests)
