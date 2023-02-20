@@ -1,6 +1,8 @@
 # digi-daro
-**API Documentation**
+## API Documentation
 - Pending
-**Table of Contents**
-- [Getting started]
-- [Pre requistite for installation]
+## Table of Contents
+- [Getting started] (#gettingstarted)
+- [Pre requistite for installation] (#prerequisite)
+- [Installation] (#installation)
+- [Test] (#tests)
