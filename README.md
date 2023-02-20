@@ -2,7 +2,7 @@
 ## API Documentation
 - Pending
 ## Table of Contents
-* [Getting started](#gettingstarted)
+* [Getting started](#getting-started)
 * [Pre requistite for installation](#prerequisite)
 * [Installation](#installation)
 * [Test](#tests)
