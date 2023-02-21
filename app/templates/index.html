@@ -1,7 +1,10 @@
 {% extends 'base.html' %}
 
 {% block body %}
-
-    <h1>Hello from DigiDaro!</h1>
+    {% if g.user %}
+        <h1>Hello {{ g.user.username }} from DigiDaro!</h1>
+    {% else %}
+        <p>You are not logged in</p>
+    {% endif %}
    
 {% endblock %}

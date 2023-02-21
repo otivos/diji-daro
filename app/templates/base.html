@@ -8,8 +8,9 @@
     <title>{% block title %}{% endblock %} | DigiDaro</title>
 </head>
 <body>
-    <div>
+    <nav>
         <ul>
+            <li><a href="{{ url_for('index') }}">Home</a></li>
             {% if g.user %}
                 <li><span>{{ g.user['username'] }}</span></li>
                 <li><a href="{{ url_for('auth.logout') }}">Logout</a></li>
@@ -18,11 +19,11 @@
                 <li><a href="{{ url_for('auth.registerStudent')}}">Register</a></li>
             {% endif %}
         </ul>
-    </div>
+    </nav>
 
     {% with messages = get_flashed_messages() %}
         {% if messages %}
-            <ul class="flashes">
+            <ul class="flash">
                 {% for message in messages %}
                     <li>{{ messages }}</li>
                 {% endfor %}
