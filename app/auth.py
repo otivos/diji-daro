@@ -8,9 +8,10 @@ from sqlalchemy.exc import IntegrityError
 
 bp = Blueprint('auth', __name__, url_prefix='/auth')
 
-# registers a new student.
 @bp.route('/student_registration', methods=('GET', 'POST'))
 def registerStudent():
+    """ Registers a new student """
+    
     # grab form data.
     if request.method == 'POST':
         error = None
@@ -21,6 +22,7 @@ def registerStudent():
         birthdate = request.form.get('birthdate')
         email = request.form.get('email')
         password = request.form.get('password')
+        password1 = request.form.get('password1')
 
         # ensure proper usage.
         if not firstname:
@@ -33,7 +35,11 @@ def registerStudent():
             error = "Gender field is empty"
         if not password:
             error = "Password field is empty"
-
+        if not password1:
+            error = "Confirm password field is empty"
+        if password != password1:
+            error = "Passwords don't match"
+        
         # persist the form data.
         if error is None:
             try:
@@ -84,7 +90,7 @@ def studentLogin():
                     session.clear()
                     session['user_id'] = row.id
                     flash("Login successfully")
-                    return render_template('students.html')
+                    return redirect(url_for('index'))
 
         flash(error)
         

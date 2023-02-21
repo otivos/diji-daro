@@ -3,3 +3,4 @@ makefile
 .env
 __pycache__
 flask_session
+read.md
