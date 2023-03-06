@@ -1,5 +1,5 @@
 import os
-from flask import Flask
+from flask import Flask, jsonify
 from flask_cors import CORS
 from flask_session import Session
 
@@ -11,6 +11,12 @@ def create_app(test_config=None):
     app.config["SECRET_KEY"] = "some_dev_key"
     app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DATABASE_URL")
     app.config['UPLOADS_FOLDER'] = 'static/uploads'
+    app.config['UPLOAD_EXTENSIONS'] = '.pdf'
+    app.config['MAX_CONTENT_LENGTH'] = 2 * 1024 * 1024
+    
+    @app.errorhandler(413)
+    def request_entity_too_large(error):
+        return jsonify({'error': 'Mbaya sana'}), 413
     
     # configure sessions.
     app.config["SESSION_PERMANENT"] = False
