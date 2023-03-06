@@ -24,3 +24,11 @@ class Student(db.Model):
     #school = db.relationship('School', backref=db.backref('students', lazy=True))
     created_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
 
+
+class LearningResource(db.Model):
+    __tablename__ = "resources"
+
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String, nullable=False)
+    resource_type = db.Column(db.String, nullable=False)
+    school = db.Column(db.String, nullable=False)

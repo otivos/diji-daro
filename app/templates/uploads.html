@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+
+{% block title %} Uploads {% endblock %}
+
+{% block body %}
+<div style="max-width: 500px; margin: 0 auto;">
+    {% if data %}
+        <p>{{data}}</p>
+    {% endif %}
+    <div id="instructions">
+        <h4>Instructions</h4>
+        <p>Please read the instructions below before uploading.</p>
+        <ol>
+            <li>
+                Ensure that your document is scanned and saved as one PDF file. If you don't have a scanner,
+                you can user your phone's camera to scan the document and convert it to a PDF using
+                a free app like Adobe Scan or CamScanner.
+            </li>
+            <li>
+                Make sure that you include the cover page/front page of the document which contains the name 
+                of the subject, school and year. Our system uses the first page to check the validity of the document.
+            </li>
+            <li>
+                Make sure the file size does not exceed <strong><em>3 MB</em></strong>. If the file is 
+                too large, you can compress it using a tool like Smallpdf or Adobe Acrobat.
+            </li>
+            <li>
+                Ensure the subject's name, type, school and year of the document corresponds to what you have 
+                selected in the form field. <em>Note: only matching documents will get uploaded to the 
+                plattform.</em>
+            </li>
+            <li>
+                Click the upload button and wait for the process to complete. Depending on the file size 
+                and the speed of your internet connection, it may take a few seconds or several minutes. You will receive 
+                a confirmation message once the upload is complete.
+            </li>
+        </ol>
+    </div>
+    <div id="uploading_form">
+        <form action="{{ url_for('upload.handleUploads') }}" method="post" enctype="multipart/form-data">
+            
+            <fieldset class="row">
+                <legend>Select school category:</legend>
+                <div class="mb-3 form-check col-3">
+                    <input class="form-check-input" type="radio" name="schoolCategory" id="prePrimary">
+                    <label for="prePrimary" class="form-check-label">Pre-Primary</label>
+                </div>
+                <div class="mb-3 form-check col-3">
+                    <input class="form-check-input" type="radio" name="schoolCategory" id="primary">
+                    <label for="primary" class="form-check-label">Primary</label>
+                </div>
+                <div class="mb-3 form-check col-3">
+                    <input class="form-check-input" type="radio" name="schoolCategory" id="secondary">
+                    <label for="secondary" class="form-check-label">Secondary</label>
+                </div>
+                <div class="mb-3 form-check col-3">
+                    <input class="form-check-input" type="radio" name="schoolCategory" id="tertiary">
+                    <label for="tertiary" class="form-check-label">College/University</label>
+                </div>
+            </fieldset>
+
+            <div class="mb-3">
+                <label class="form-label" for="subject">Subject</label>
+                <select class="form-select" aria-label="Default select" name="subject" id="subject">
+                    <option selected disabled>Please select</option>
+                    <option value="eng">English</option>
+                    <option value="kisw">Kiswahil</option>
+                    <option value="maths">Mathematics</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="subject_type">Subject Type</label>
+                <select class="form-select" aria-label="Default select" name="subject_type" id="subject_type">
+                    <option selected disabled>Please select</option>
+                    <option value="ordinary">Ordinary</option>
+                    <option value="p1">Paper 1</option>
+                    <option value="p2">Paper 2</option>
+                    <option value="p3">Paper 3</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="schools_list">School</label>
+                <input class="form-control" list="schoolsOptions" type="text" name="schools_list" id="schools_list" placeholder="Type to search">
+                <datalist id="schoolsOptions">
+                    <option value="Kisumu Polytechnic">
+                    <option value="Maseno University">
+                    <option value="Nairobi University">
+                    <option value="Technical University of Kenya">
+                    <option value="St. Mary's School Yala"></option>
+                </datalist>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="level">Class Level</label>
+                <select class="form-select" aria-label="Default select" name="level" id="level">
+                    <option selected disabled>Please select</option>
+                    <option value="f1">Form One</option>
+                    <option value="f2">Form Two</option>
+                    <option value="f3">Form Three</option>
+                    <option value="f4">Form Four</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="resource_year" class="form-label">Year</label>
+                <input type="number" class="form-control" id="resource_year" name="year" min="1964" max="2023" step="1" pattern="\d{4}" minlength="4" maxlength="4">
+            </div>
+            <div class="mb-3">
+                <label for="file" class="form-label">Select file to upload</label>
+                <input type="file" class="form-control" name="file" accept=".pdf" id="resource_file">
+            </div>
+            <div class="mb-3">
+                <input type="submit" name="" id="">
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
